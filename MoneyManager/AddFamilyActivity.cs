@@ -85,6 +85,7 @@ namespace MoneyManager
             CollectTheChildrenName();
             StoreFamilyRecordInObject();
             CreateTablesAndInsertData();
+            this.Finish();
         }
 
         private void CreateTablesAndInsertData()
