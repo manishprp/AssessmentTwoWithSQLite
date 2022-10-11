@@ -1,8 +1,6 @@
 ﻿using Android.App;
 using Android.Content;
 using Android.OS;
-using Android.Views;
-using Android.Widget;
 using AndroidX.AppCompat.App;
 using AndroidX.RecyclerView.Widget;
 using Google.Android.Material.FloatingActionButton;
@@ -11,7 +9,6 @@ using MoneyManager.Adapter;
 using MoneyManager.Model;
 using System;
 using System.Collections.Generic;
-using System.Threading.Tasks;
 
 namespace MoneyManager
 {
@@ -33,6 +30,11 @@ namespace MoneyManager
         }
         protected override void OnResume()
         {
+            if(_familyRecordRecyclerViewAdapter==null && FetchDataFromDb()!=null)
+            {
+                SetUpRecyclerView();
+            }
+            if(_familyRecordRecyclerViewAdapter!=null)
             CheckForUpdate();
             base.OnResume();
         }
@@ -59,15 +61,19 @@ namespace MoneyManager
         {
             _familyRecord.Clear();
             _familyRecord = FetchDataFromDb();
-            _familyRecordRecyclerViewAdapter = new FamilyRecordRecyclerViewAdapter(_familyRecord);
-            _addFamilyRecyclerView.SetLayoutManager(new LinearLayoutManager(this));
-            _addFamilyRecyclerView.SetAdapter(_familyRecordRecyclerViewAdapter);
-            _addFamilyRecyclerView.AddItemDecoration(new DividerItemDecoration(this, DividerItemDecoration.Vertical));
-            _familyRecordRecyclerViewAdapter.ItemClick += _familyRecordRecyclerViewAdapter_ItemClick;
-            SwipeFeature item = new SwipeFeature(0, ItemTouchHelper.Left|ItemTouchHelper.Right);
-            ItemTouchHelper itemTouch = new ItemTouchHelper(item);
-            itemTouch.AttachToRecyclerView(_addFamilyRecyclerView);
-            item.swipeDone += Item_swipeDone;
+            if(_familyRecord!=null)
+            {
+                _familyRecordRecyclerViewAdapter = new FamilyRecordRecyclerViewAdapter(_familyRecord);
+                _addFamilyRecyclerView.SetLayoutManager(new LinearLayoutManager(this));
+                _addFamilyRecyclerView.SetAdapter(_familyRecordRecyclerViewAdapter);
+                _addFamilyRecyclerView.AddItemDecoration(new DividerItemDecoration(this, DividerItemDecoration.Vertical));
+                _familyRecordRecyclerViewAdapter.ItemClick += _familyRecordRecyclerViewAdapter_ItemClick;
+                SwipeFeature item = new SwipeFeature(ItemTouchHelper.Up|ItemTouchHelper.Down|ItemTouchHelper.Start|ItemTouchHelper.End, ItemTouchHelper.Left | ItemTouchHelper.Right);
+                ItemTouchHelper itemTouch = new ItemTouchHelper(item);
+                itemTouch.AttachToRecyclerView(_addFamilyRecyclerView);
+                item.swipeDone += Item_swipeDone;
+            }
+            
         }
 
         private void Item_swipeDone(object sender, MessageSender e)

@@ -62,7 +62,23 @@ namespace MoneyManager
                 return null;
             }
         }
-
+        public static bool ReplaceAll(List<FamilyRecord> family)
+        {
+            var familyRecord = new FamilyRecord();
+            try
+            {
+                using (var connection = new SQLiteConnection(System.IO.Path.Combine(folder, "Persons.db")))
+                {
+                    connection.InsertOrReplaceAllWithChildren(family, true);
+                }
+                return true;
+            }
+            catch (SQLiteException ex)
+            {
+                Toast.MakeText(Application.Context, ex.Message, ToastLength.Short).Show();
+                return false;
+            }
+        }
 
         public static bool DeleteFamily(int famid)
         {

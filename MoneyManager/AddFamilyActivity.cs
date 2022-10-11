@@ -6,15 +6,10 @@ using AndroidX.AppCompat.App;
 using AndroidX.RecyclerView.Widget;
 using Google.Android.Material.Button;
 using Google.Android.Material.TextField;
-using Java.Lang;
-using Java.Util.Logging;
 using MoneyManager.Adapter;
 using MoneyManager.Model;
 using System;
 using System.Collections.Generic;
-using static Android.Icu.Text.Transliterator;
-using static Android.Renderscripts.ScriptGroup;
-using static Android.Views.ViewTreeObserver;
 
 namespace MoneyManager
 {
