@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <TextView
+        android:id="@+id/addFamilyTextView"
+        android:padding="10dp"
+        android:textColor="@android:color/black"
+        android:text="Add Family"
+        android:textSize="35sp"
+        android:background="#c1c1c1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_below="@+id/addFamilyTextView"
+        android:id="@+id/enterFatherNameEditText"
+        android:layout_marginHorizontal="10dp"
+        app:boxStrokeColor="@android:color/black"
+        app:boxStrokeWidth="4dp"
+        android:layout_marginTop="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <EditText
+            android:imeOptions="actionNext"
+            android:hint="Enter Father Name"
+            android:singleLine="true"
+            android:layout_width="match_parent"
+            android:layout_height="65dp"/>
+    </com.google.android.material.textfield.TextInputLayout>
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_below="@+id/enterFatherNameEditText"
+        android:id="@+id/enterMotherNameEditText"
+        android:layout_marginHorizontal="10dp"
+        app:boxStrokeColor="@android:color/black"
+        app:boxStrokeWidth="4dp"
+        android:layout_marginTop="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <EditText
+            android:imeOptions="actionNext"
+            android:hint="Enter Mother Name"
+            android:singleLine="true"
+            android:layout_width="match_parent"
+            android:layout_height="65dp"/>
+    </com.google.android.material.textfield.TextInputLayout>
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_below="@+id/enterMotherNameEditText"
+        android:id="@+id/enterAddressEditText"
+        android:layout_marginHorizontal="10dp"
+        app:boxStrokeColor="@android:color/black"
+        app:boxStrokeWidth="4dp"
+        android:layout_marginTop="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <EditText
+            android:imeOptions="actionNext"
+            android:singleLine="true"
+            android:hint="Enter Address"
+            android:layout_width="match_parent"
+            android:layout_height="65dp"/>
+    </com.google.android.material.textfield.TextInputLayout>
+    <com.google.android.material.button.MaterialButton
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/enterAddressEditText"
+        android:id="@+id/addChildButton"
+        android:text="Add Child"
+        android:textColor="@android:color/white"
+        android:backgroundTint="#000000"
+        android:layout_gravity="center_horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_below="@+id/addChildButton"
+        android:id="@+id/enterChildRecyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/saveButton"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:text="Save"
+        android:textColor="@android:color/white"
+        android:backgroundTint="#3b8905"
+        android:layout_width="120dp"
+        android:layout_height="60dp"/>
+
+</RelativeLayout>
+
